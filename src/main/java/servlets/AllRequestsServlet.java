@@ -14,19 +14,33 @@ public class AllRequestsServlet extends HttpServlet {
 
     private String login = "";
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Map<String, Object> pageVariables = createPageVariablesMap(request);
-        pageVariables.put("messade","");
+        pageVariables.put("messade", "");
 
-        response.getWriter().println(PageGenerator.i);
+        response.getWriter().println(PageGenerator.instance().getPage("page.html",pageVariables));
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
     }
 
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Map<String, Object> pageVariables = createPageVariablesMap(request);
+        String message = request.getParameter("messege");
+        response.setContentType("text/html;charset=utf-8");
 
+        if (message == null || message.isEmpty()) {
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+        } else {
+            response.setStatus(HttpServletResponse.SC_OK);
+        }
+
+        pageVariables.put("messege", message == null ? "" : message);
+
+        response.getWriter().println(PageGenerator.instance().getPage("page.html",pageVariables));
     }
 
     private static Map<String, Object> createPageVariablesMap(HttpServletRequest request) {

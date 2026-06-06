@@ -14,8 +14,8 @@ public class Main {
         //создание сервлета и передача в него того что обробатывает запросы на сервер
        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
 
+       context.addServlet(new ServletHolder(frontend),"/*");
        server.setHandler(context);
-       context.addServlet(new ServletHolder(frontend),"/authform");
 
        server.start();
        server.join();
