@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>L1.1</title>
 </head>
 <body>
+<form action="/page.html" method="post">
+    <br>Login: <input type="text" name="message"/>
+    <br><input type="submit" value="Ok">
+</form>
+<p><br>Message: ${message}</p>
+
+<p><br>Method: ${method}</p>
+
+<p><br>URL: ${URL}</p>
+
+<p><br>PathInfo: ${pathInfo}</p>
+
+<p><br>SessionId: ${sessionId}</p>
+
+<p><br>Parameters: ${parameters}</p>
 
 </body>
 </html>
