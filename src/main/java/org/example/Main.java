@@ -3,11 +3,12 @@ package org.example;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+import servlets.AllRequestsServlet;
 
 public class Main {
     public static void main(String[] args) throws Exception {
 
-       Frontend frontend = new Frontend();
+       AllRequestsServlet frontend = new AllRequestsServlet();
 
        Server server = new Server(8080);//сервер джетти на порту локалхост
         //создание сервлета и передача в него того что обробатывает запросы на сервер

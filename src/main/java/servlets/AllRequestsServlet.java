@@ -1,4 +1,6 @@
-package org.example;
+package servlets;
+
+import templater.PageGenerator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +10,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Frontend extends HttpServlet {
+public class AllRequestsServlet extends HttpServlet {
 
     private String login = "";
 
