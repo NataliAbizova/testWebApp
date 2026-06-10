@@ -18,7 +18,7 @@ public class AllRequestsServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Map<String, Object> pageVariables = createPageVariablesMap(request);
-        pageVariables.put("messade", "");
+        pageVariables.put("message", "");
 
         response.getWriter().println(PageGenerator.instance().getPage("page.html",pageVariables));
         response.setContentType("text/html;charset=utf-8");
@@ -29,7 +29,7 @@ public class AllRequestsServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Map<String, Object> pageVariables = createPageVariablesMap(request);
-        String message = request.getParameter("messege");
+        String message = request.getParameter("message");
         response.setContentType("text/html;charset=utf-8");
 
         if (message == null || message.isEmpty()) {
@@ -38,7 +38,7 @@ public class AllRequestsServlet extends HttpServlet {
             response.setStatus(HttpServletResponse.SC_OK);
         }
 
-        pageVariables.put("messege", message == null ? "" : message);
+        pageVariables.put("message", message == null ? "" : message);
 
         response.getWriter().println(PageGenerator.instance().getPage("page.html",pageVariables));
     }
